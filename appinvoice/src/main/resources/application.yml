@@ -5,7 +5,7 @@ spring:
     show-sql: true
     hibernate:
         ddl-auto: update #create-drop 
-  #estrategia de generacion de base de datos
+ #estrategia de generacion de base de datos
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost/db_invoice
