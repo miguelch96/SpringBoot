@@ -1,4 +1,4 @@
-package com.appinvoice.app.models.dao;
+package com.appinvoice.app.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
