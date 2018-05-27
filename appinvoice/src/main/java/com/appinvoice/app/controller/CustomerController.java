@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-
-
-
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -53,6 +51,7 @@ public class CustomerController {
 		return "customer/list";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping(value = "/new")
 	public String newCustomer(Model model) {
 
@@ -62,6 +61,7 @@ public class CustomerController {
 		return "customer/form";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@PostMapping(value = "/save")
 	public String saveCustomer(@Valid Customer customer, BindingResult result, Model model, RedirectAttributes flash,
 			SessionStatus status) {
@@ -80,6 +80,7 @@ public class CustomerController {
 		return "redirect:/customer/";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping(value = "/edit/{id}")
 	public String editCustomer(@PathVariable(value = "id") Long id, Model model, RedirectAttributes flash) {
 
@@ -100,6 +101,8 @@ public class CustomerController {
 		return "customer/form";
 	}
 
+	
+	@Secured("ROLE_ADMIN")
 	@GetMapping(value = "/delete/{id}")
 	public String deleteCustomer(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
@@ -111,6 +114,7 @@ public class CustomerController {
 		return "redirect:/customer/";
 	}
 
+	@Secured("ROLE_USER")
 	@GetMapping(value = "/detail/{id}")
 	public String detailsCustomer(@PathVariable(value = "id") Long id, Model model, RedirectAttributes flash) {
 

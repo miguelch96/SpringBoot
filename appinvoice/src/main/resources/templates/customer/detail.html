@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: head"></head>
 <body>
 
@@ -46,8 +46,8 @@
 							<th>Description</th>
 							<th>Date</th>
 							<th>Total</th>
-							<th>Detail</th>
-							<th>Delete</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Detail</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -56,10 +56,10 @@
 							<td th:text="${invoice.description}"></td>
 							<td th:text="${invoice.createAt}"></td>
 							<td th:text="${invoice.total}"></td>
-							<td><a class="btn btn-primary btn-xs"
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary btn-xs"
 								th:href="@{'/invoice/detail/'+ ${invoice.id}}"
 								th:text="'detail'"></a></td>
-							<td><a class="btn btn-danger btn-xs"
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger btn-xs"
 								th:href="@{'/invoice/delete/'+ ${invoice.id}}"
 								th:text="'delete'"
 								onclick="return confirm('¿Are you sure you want to delete?');"></a></td>
@@ -70,9 +70,10 @@
 
 			</div>
 		</div>
+	</div>
 
 
 
-		<footer th:replace="layout/layout :: footer"></footer>
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

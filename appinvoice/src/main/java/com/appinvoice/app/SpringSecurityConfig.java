@@ -12,7 +12,7 @@ import com.appinvoice.app.auth.handler.LoginSuccessHandler;
 import com.appinvoice.app.service.JpaUserDetailsService;
 
 
-@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true)
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
