@@ -18,8 +18,10 @@ public class LoginController {
 		
 		if(principal != null) {
 			flash.addFlashAttribute("info", "Ya ha inciado sesión anteriormente");
-			return "redirect:/";
+			return "redirect:/customer/list";
 		}
+		
+		
 		
 		if(error != null) {
 			model.addAttribute("error", "Error en el login: Nombre de usuario o contraseña incorrecta, por favor vuelva a intentarlo!");

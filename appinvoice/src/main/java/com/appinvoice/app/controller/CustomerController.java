@@ -1,11 +1,15 @@
 package com.appinvoice.app.controller;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,23 +26,24 @@ import com.appinvoice.app.models.entity.Customer;
 import com.appinvoice.app.service.ICustomerService;
 import com.appinvoice.app.util.PageRender;
 
-
 @Controller
 @SessionAttributes("customer")
-@RequestMapping("/customer")
+@RequestMapping("/customer/")
 public class CustomerController {
 
 	@Autowired
 	private ICustomerService customerService;
 
-	@GetMapping("/")
-	public String listCustomer(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+	@GetMapping(value = "/list")
+	public String listCustomer(@RequestParam(name = "page", defaultValue = "0") int page, Model model
+			) {
 
+		
 		Pageable pageRequest = PageRequest.of(page, 8);
 
 		Page<Customer> customers = customerService.findAll(pageRequest);
 
-		PageRender<Customer> pageRender = new PageRender<Customer>("/customer/", customers);
+		PageRender<Customer> pageRender = new PageRender<Customer>("/customer/list/", customers);
 
 		model.addAttribute("title", "List of customers");
 
@@ -106,7 +111,6 @@ public class CustomerController {
 		return "redirect:/customer/";
 	}
 
-	
 	@GetMapping(value = "/detail/{id}")
 	public String detailsCustomer(@PathVariable(value = "id") Long id, Model model, RedirectAttributes flash) {
 
@@ -120,4 +124,6 @@ public class CustomerController {
 		model.addAttribute("title", "Customer");
 		return "customer/detail";
 	}
+
+	
 }
