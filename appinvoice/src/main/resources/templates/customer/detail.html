@@ -48,9 +48,9 @@
 							<td th:text="${invoice.createAt}"></td>
 							<td th:text="${invoice.total}"></td>
 							<td><a class="btn btn-primary btn-xs"
-								th:href="@{'/invoice/detail/' + ${invoice.id}}" th:text="'detail'"></a></td>
+								th:href="@{'/invoice/detail/'+ ${invoice.id}}" th:text="'detail'"></a></td>
 							<td><a class="btn btn-danger btn-xs"
-								th:href="@{'/invoice/delete/' + ${invoice.id}}"
+								th:href="@{'/invoice/delete/'+ ${invoice.id}}"
 								th:text="'delete'"
 								onclick="return confirm('¿Are you sure you want to delete?');"></a></td>
 						</tr>

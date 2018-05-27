@@ -21,7 +21,7 @@ public class InvoiceLine implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private Integer cantidad;
+	private Integer quantity;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id")
@@ -35,12 +35,12 @@ public class InvoiceLine implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getCantidad() {
-		return cantidad;
+	public Integer getQuantity() {
+		return quantity;
 	}
 
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	public Product getProduct() {
@@ -53,7 +53,7 @@ public class InvoiceLine implements Serializable {
 	
 	public Double calculateAmount() {
 		// TODO
-		return cantidad.doubleValue()*product.getPrice();
+		return quantity.doubleValue()*product.getPrice();
 	}
 
 }

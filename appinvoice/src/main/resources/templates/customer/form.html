@@ -20,7 +20,7 @@
 
 				<form th:action="@{/customer/save}" th:object="${customer}" method="post">
 					<div class="form-group row">
-						<label for="nombre" class="col-sm-2 col-form-label">Name</label>
+						<label for="name" class="col-sm-2 col-form-label">Name</label>
 						<div class="col-sm-6">
 							<input type="text" th:field="*{name}" class="form-control"
 								th:errorclass="'form-control alert-danger'" /> <small

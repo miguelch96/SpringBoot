@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 @Entity
 @Table(name = "invoices")
 public class Invoice implements Serializable{
@@ -42,7 +43,7 @@ public class Invoice implements Serializable{
 	private Customer customer;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "factura_id")
+	@JoinColumn(name = "invoice_id")
 	private List<InvoiceLine> items;
 
 	public Invoice() {
@@ -100,6 +101,10 @@ public class Invoice implements Serializable{
 
 	public void setItems(List<InvoiceLine> items) {
 		this.items = items;
+	}
+	
+	public void addItemInvoice(InvoiceLine item) {
+		this.items.add(item);
 	}
 	
 	public Double getTotal() {

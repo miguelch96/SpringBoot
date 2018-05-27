@@ -45,7 +45,7 @@ public class CustomerController {
 		model.addAttribute("customers", customers);
 		model.addAttribute("page", pageRender);
 
-		return "list";
+		return "customer/list";
 	}
 
 	@GetMapping(value = "/new")
@@ -54,7 +54,7 @@ public class CustomerController {
 		Customer customer = new Customer();
 		model.addAttribute("customer", customer);
 		model.addAttribute("title", "New Customer");
-		return "form";
+		return "customer/form";
 	}
 
 	@PostMapping(value = "/save")
@@ -63,7 +63,7 @@ public class CustomerController {
 
 		if (result.hasErrors()) {
 			model.addAttribute("title", "Save Customer");
-			return "form";
+			return "customer/form";
 		}
 
 		String mensajeFlash = (customer.getId() != null) ? "Successfully edited client!"
@@ -92,7 +92,7 @@ public class CustomerController {
 		}
 		model.addAttribute("customer", customer);
 		model.addAttribute("title", "Edit Customer");
-		return "form";
+		return "customer/form";
 	}
 
 	@GetMapping(value = "/delete/{id}")
@@ -118,6 +118,6 @@ public class CustomerController {
 
 		model.addAttribute("customer", customer);
 		model.addAttribute("title", "Details Customer: " + customer.getName());
-		return "detail";
+		return "customer/detail";
 	}
 }

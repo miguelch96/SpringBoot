@@ -96,5 +96,10 @@ public class Customer implements Serializable {
 	public void setInvoices(List<Invoice> invoices) {
 		this.invoices = invoices;
 	}
+	
+	@Override
+	public String toString() {
+		return name + " " + lastname;
+	}
 
 }

@@ -18,7 +18,7 @@
 			</h4>
 
 
-			<nav th:replace="paginator-nav :: paginator"></nav>
+			<nav th:replace="customer/paginator-nav :: paginator"></nav>
 			<div class="row justify-content-center">
 
 				<div class=".col-xs-6 .col-sm-3" th:each="customer: ${customers}">
@@ -26,7 +26,7 @@
 						<img class="card-img-top" th:src="@{/images/customer.png}"
 							width="30" height="200" alt="Mi Imagen">
 							<a class="btn btn-primary btn-xs"
-									th:href="@{/customer/detail/} + ${customer.id}">Detail</a>
+									th:href="@{'/customer/detail/' + ${customer.id}}">Detail</a>
 							
 						<div class="card-body">
 							<h4 class="card-title" th:text="${customer.name}">Henry
@@ -35,12 +35,13 @@
 								Puerta</p>
 							<p class="card-text" th:text="${customer.email}">hmendo81@gmail.com</p>
 							<p class="card-text" th:text="${customer.createAt}">2018-06-26</p>
-							<a href="#" th:href="@{/customer/edit/} + ${customer.id}"
+							<a href="#" th:href="@{'/customer/edit/' + ${customer.id}}"
 								th:text="'edit'" class="btn btn-primary">Edit</a> <a href="#"
-								th:href="@{/customer/delete/} + ${customer.id}"
+								th:href="@{'/customer/delete/'+ ${customer.id}}"
 								th:text="'delete'"
 								onclick="return confirm('Are you sure you want to delete?');"
-								class="btn btn-danger">Delete</a> <a href="#"
+								class="btn btn-danger">Delete</a>
+								 <a href="#" th:href="@{'/invoice/new/' + ${customer.id}}"
 								class="btn btn-success">Invoice</a>
 						</div>
 					</div>
@@ -49,7 +50,7 @@
 			</div>
 
 		</div>
-		<nav th:replace="paginator-nav :: paginator"></nav>
+		<nav th:replace="customer/paginator-nav :: paginator"></nav>
 	</div>
 
 
