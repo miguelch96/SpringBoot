@@ -8,7 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.appinvoice.app.auth.handler.LoginSuccessHandler;
 import com.appinvoice.app.service.JpaUserDetailsService;
+
 
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 @Configuration
@@ -19,10 +21,23 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private LoginSuccessHandler successHandler;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-			
+		http.authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/images/**", "/listar").permitAll()
+		.anyRequest().authenticated()
+		.and()
+		    .formLogin()
+		        .successHandler(successHandler)
+		        .loginPage("/login")
+		    .permitAll()
+		.and()
+		.logout().permitAll()
+		.and()
+		.exceptionHandling().accessDeniedPage("/error_403");
 	}
 
 	@Autowired
