@@ -29,8 +29,6 @@ import com.appinvoice.app.service.ICustomerService;
 import com.appinvoice.app.service.IInvoiceService;
 import com.appinvoice.app.service.IProductService;
 
-
-
 @Controller
 @RequestMapping("/invoice")
 @SessionAttributes("invoice")

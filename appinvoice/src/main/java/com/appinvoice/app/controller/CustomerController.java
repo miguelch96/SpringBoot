@@ -77,7 +77,7 @@ public class CustomerController {
 		customerService.save(customer);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
-		return "redirect:/customer/";
+		return "redirect:/customer/list";
 	}
 
 	@Secured("ROLE_ADMIN")
@@ -90,7 +90,7 @@ public class CustomerController {
 			customer = customerService.findById(id);
 			if (customer == null) {
 				flash.addFlashAttribute("error", "The customer ID does not exist in the database!");
-				return "redirect:/customer/";
+				return "redirect:/customer/list";
 			}
 		} else {
 			flash.addFlashAttribute("error", "The customer ID can not be zero!");
@@ -111,7 +111,7 @@ public class CustomerController {
 			customerService.deleteById(id);
 			flash.addFlashAttribute("success", "Customer removed successfully!");
 		}
-		return "redirect:/customer/";
+		return "redirect:/customer/list";
 	}
 
 	@Secured("ROLE_USER")
@@ -121,7 +121,7 @@ public class CustomerController {
 		Customer customer = customerService.findById(id);
 		if (customer == null) {
 			flash.addFlashAttribute("error", "The client does not exist in the database");
-			return "redirect:/customer/";
+			return "redirect:/customer/list";
 		}
 
 		model.addAttribute("customer", customer);
