@@ -117,7 +117,7 @@ public class CustomerController {
 		}
 
 		model.addAttribute("customer", customer);
-		model.addAttribute("title", "Details Customer: " + customer.getName());
+		model.addAttribute("title", "Customer");
 		return "customer/detail";
 	}
 }

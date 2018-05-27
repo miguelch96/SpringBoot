@@ -6,17 +6,20 @@
 	<header th:replace="layout/layout :: header"></header>
 
 	<div class="container py-4">
-		<div class="card bg-light">
-			<div class="card-header" th:text="${title}"></div>
-			<div class="card-body">
-				<h4 class="card-title">
-					<a class="btn btn-light btn-xs"
-						th:href="@{'/customer/detail/' + ${invoice.customer.id}}"
-						th:text="'&laquo; back'"></a>
-				</h4>
+		<form th:action="@{/invoice/save/}" th:object="${invoice}"
+			method="post">
+			<div class="card ">
 
-				<form th:action="@{/invoice/save/}" th:object="${invoice}"
-					method="post">
+
+				<div class="card-header text-white bg-dark" th:text="${title}"></div>
+				<div class="card-body">
+					<h4 class="card-title">
+						<a class="btn btn-light btn-xs"
+							th:href="@{'/customer/detail/' + ${invoice.customer.id}}"
+							th:text="'&laquo; back'"></a>
+					</h4>
+
+
 
 					<div class="form-group row">
 						<label for="customer" class="col-sm-2 col-form-label"
@@ -32,8 +35,11 @@
 						<label for="descripcion" class="col-sm-2 col-form-label"
 							th:text="'Description'"></label>
 						<div class="col-sm-6">
-							<input type="text" th:field="*{description}" class="form-control" th:errorclass="'form-control is-invalid'" />
-							<div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+							<input type="text" th:field="*{description}" class="form-control"
+								th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback"
+								th:if="${#fields.hasErrors('description')}"
+								th:errors="*{description}"></div>
 						</div>
 					</div>
 
@@ -54,6 +60,16 @@
 						</div>
 					</div>
 
+
+
+
+
+				</div>
+			</div>
+
+			<div class="card bg-light">
+				<div class="card-header text-white bg-dark">Invoice Line</div>
+				<div class="card-body">
 					<table th:replace="invoice/template-items :: itemsInvoice"></table>
 
 					<table id="loadItemProducts"
@@ -70,19 +86,18 @@
 						<tbody>
 						</tbody>
 					</table>
-					<h5>Total <span class="badge badge-secondary" id="gran_total">0</span></h5>
+					<h5>
+						Total <span class="badge badge-primary" id="gran_total">0</span>
+					</h5>
 
 					<div class="form-group row">
 						<div class="col-sm-6">
-							<input type="submit" th:value="${title}"
-								class="btn btn-secondary" />
+							<input type="submit" value="Save Invoice" class="btn btn-primary" />
 						</div>
 					</div>
-				</form>
-
-
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 
 	<footer th:replace="layout/layout :: footer"></footer>

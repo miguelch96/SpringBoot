@@ -56,7 +56,7 @@ public class InvoiceController {
 		}
 
 		model.addAttribute("invoice", invoice);
-		model.addAttribute("title", "Invoice: ".concat(invoice.getDescription()));
+		model.addAttribute("title", "Detail Invoice");
 		return "invoice/detail";
 	}
 
@@ -75,7 +75,7 @@ public class InvoiceController {
 		invoice.setCustomer(customer);
 
 		model.addAttribute("invoice", invoice);
-		model.addAttribute("title", "New Invoice");
+		model.addAttribute("title", "Invoice");
 
 		return "invoice/form";
 	}
@@ -129,7 +129,7 @@ public class InvoiceController {
 		if (invoice != null) {
 			invoiceService.deleteById(id);
 			flash.addFlashAttribute("success", "Invoice successfully eliminated!");
-			return "redirect:/detail/" + invoice.getCustomer().getId();
+			return "redirect:/customer/detail/" + invoice.getCustomer().getId();
 		}
 		flash.addFlashAttribute("error", "The invoice does not exist in the database, it could not be deleted!");
 
