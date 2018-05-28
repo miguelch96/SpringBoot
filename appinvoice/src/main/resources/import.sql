@@ -36,13 +36,13 @@ INSERT INTO products (name, price, create_at) VALUES('Mica Comoda 5 Cajones', 29
 
 
 INSERT INTO invoices (description, observation, customer_id, create_at) VALUES('Factura equipos de oficina', null, 1, NOW());
-INSERT INTO invoice_items (quantity, invoice_id, product_id) VALUES(1, 1, 1);
-INSERT INTO invoice_items (quantity, invoice_id, product_id) VALUES(2, 1, 4);
-INSERT INTO invoice_items (quantity, invoice_id, product_id) VALUES(1, 1, 5);
-INSERT INTO invoice_items (quantity, invoice_id, product_id) VALUES(1, 1, 7);
+INSERT INTO invoice_lines (quantity, invoice_id, product_id) VALUES(1, 1, 1);
+INSERT INTO invoice_lines (quantity, invoice_id, product_id) VALUES(2, 1, 4);
+INSERT INTO invoice_lines (quantity, invoice_id, product_id) VALUES(1, 1, 5);
+INSERT INTO invoice_lines (quantity, invoice_id, product_id) VALUES(1, 1, 7);
 
 INSERT INTO invoices (description, observation, customer_id, create_at) VALUES('Factura Bicicleta', 'Alguna nota importante!', 1, NOW());
-INSERT INTO invoice_items (quantity, invoice_id, product_id) VALUES(3, 2, 6);
+INSERT INTO invoice_lines (quantity, invoice_id, product_id) VALUES(3, 2, 6);
 
 
 
