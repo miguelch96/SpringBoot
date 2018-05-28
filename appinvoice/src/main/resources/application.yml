@@ -10,7 +10,7 @@ spring:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost/dbinvoiceoffice
     username: postgres
-    password: admin
+    password: 
     
     
 server:
